@@ -15,7 +15,7 @@
 
   <meta
     name="description"
-    content="Public incremental HTML and JSON targets for testing StarUp."
+    content="StarUp — monitor numeric values exposed through HTML or JSON."
   >
 
   <link
@@ -28,7 +28,7 @@
     href="./styles.css"
   >
 
-  <title>StarUp Test Targets</title>
+  <title>StarUp</title>
 </head>
 
 <body>
@@ -46,14 +46,31 @@
         <span>StarUp</span>
       </a>
 
-      <a
-        class="github-link"
-        href="https://github.com/Loxime/starup-demo"
-        target="_blank"
-        rel="noreferrer"
-      >
-        GitHub
-      </a>
+      <nav class="nav-links">
+        <a
+          href="https://github.com/Loxime/starup#readme"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Documentation
+        </a>
+
+        <a
+          href="https://hub.docker.com/r/loxime/starup"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Docker
+        </a>
+
+        <a
+          href="https://github.com/Loxime/starup"
+          target="_blank"
+          rel="noreferrer"
+        >
+          GitHub
+        </a>
+      </nav>
     </div>
   </header>
 
@@ -62,20 +79,37 @@
       <div class="hero-copy">
         <div class="status">
           <span class="status-dot"></span>
-          Public test targets
+          Open source monitoring
         </div>
 
         <h1>
-          Incremental targets for
-          <span>StarUp</span>
+          Monitor numeric values from
+          <span>HTML and JSON</span>
         </h1>
 
         <p>
-          Two public endpoints for testing numeric
-          monitoring with StarUp.
-          One JSON source and one HTML source,
-          both exposing the same incremental value.
+          StarUp polls HTTP endpoints, extracts numeric values,
+          stores measurements in PostgreSQL and displays their
+          evolution over time.
         </p>
+
+        <div class="hero-actions">
+          <a
+            class="button primary"
+            href="#docker"
+          >
+            Get StarUp
+          </a>
+
+          <a
+            class="button secondary"
+            href="https://github.com/Loxime/starup#readme"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Documentation
+          </a>
+        </div>
       </div>
 
       <div class="mascot-wrap">
@@ -87,10 +121,140 @@
       </div>
     </section>
 
+    <section
+      class="docker-section"
+      id="docker"
+    >
+      <div class="docker-heading">
+        <div>
+          <span class="section-kicker">
+            Docker image
+          </span>
+
+          <h2>
+            Run StarUp anywhere
+          </h2>
+
+          <p>
+            Multi-architecture production image for
+            AMD64 and ARM64.
+          </p>
+        </div>
+
+        <div class="release-badges">
+          <span class="release-badge">
+            v0.3.1
+          </span>
+
+          <span class="arch-badge">
+            amd64
+          </span>
+
+          <span class="arch-badge">
+            arm64
+          </span>
+        </div>
+      </div>
+
+      <div class="docker-card">
+        <div class="docker-image-row">
+          <div>
+            <span class="docker-label">
+              Image
+            </span>
+
+            <strong>
+              loxime/starup
+            </strong>
+          </div>
+
+          <a
+            class="external-link"
+            href="https://hub.docker.com/r/loxime/starup"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Docker Hub ↗
+          </a>
+        </div>
+
+        <div class="command-group">
+          <div class="command-header">
+            <span>Stable release</span>
+
+            <button
+              type="button"
+              data-copy-value="docker pull loxime/starup:v0.3.1"
+            >
+              Copy
+            </button>
+          </div>
+
+          <div class="command">
+            <span class="prompt">$</span>
+
+            <code>
+              docker pull loxime/starup:v0.3.1
+            </code>
+          </div>
+        </div>
+
+        <div class="command-group">
+          <div class="command-header">
+            <span>Latest</span>
+
+            <button
+              type="button"
+              data-copy-value="docker pull loxime/starup:latest"
+            >
+              Copy
+            </button>
+          </div>
+
+          <div class="command">
+            <span class="prompt">$</span>
+
+            <code>
+              docker pull loxime/starup:latest
+            </code>
+          </div>
+        </div>
+
+        <div class="docker-meta">
+          <div>
+            <span>Port</span>
+            <strong>3000</strong>
+          </div>
+
+          <div>
+            <span>Storage</span>
+            <strong>PostgreSQL</strong>
+          </div>
+
+          <div>
+            <span>Migrations</span>
+            <strong>Automatic</strong>
+          </div>
+
+          <div>
+            <span>Release</span>
+
+            <a
+              href="https://github.com/Loxime/starup/releases/tag/v0.3.1"
+              target="_blank"
+              rel="noreferrer"
+            >
+              v0.3.1 ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="metric">
       <div>
         <span class="metric-label">
-          Current value
+          Public target value
         </span>
 
         <strong id="current-value">
@@ -119,7 +283,7 @@
         </div>
 
         <p>
-          Use this endpoint with a JSON monitor.
+          Public endpoint ready to use with a StarUp JSON monitor.
         </p>
 
         <div class="field">
@@ -176,7 +340,7 @@
         </div>
 
         <p>
-          Use this endpoint with an HTML monitor.
+          Public endpoint ready to use with a StarUp HTML monitor.
         </p>
 
         <div class="field">
@@ -221,19 +385,25 @@
     </section>
 
     <section class="usage">
-      <h2>
-        Quick test
-      </h2>
+      <div class="usage-heading">
+        <span class="section-kicker">
+          Test targets
+        </span>
+
+        <h2>
+          Test StarUp in a few seconds
+        </h2>
+      </div>
 
       <div class="usage-grid">
         <div>
           <span>01</span>
-          Create a monitor in StarUp.
+          Create a new monitor.
         </div>
 
         <div>
           <span>02</span>
-          Paste one of the endpoints above.
+          Paste one of the public endpoints.
         </div>
 
         <div>
@@ -243,7 +413,7 @@
 
         <div>
           <span>04</span>
-          Watch the value grow over time.
+          Watch the metric increase over time.
         </div>
       </div>
     </section>
@@ -252,12 +422,34 @@
   <footer>
     <div class="container footer-inner">
       <span>
-        StarUp public test targets
+        StarUp
       </span>
 
-      <span>
-        Hosted on GitHub Pages
-      </span>
+      <div class="footer-links">
+        <a
+          href="https://github.com/Loxime/starup#readme"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Documentation
+        </a>
+
+        <a
+          href="https://hub.docker.com/r/loxime/starup"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Docker Hub
+        </a>
+
+        <a
+          href="https://github.com/Loxime/starup"
+          target="_blank"
+          rel="noreferrer"
+        >
+          GitHub
+        </a>
+      </div>
     </div>
   </footer>
 
@@ -305,7 +497,8 @@
       } catch {
         document.querySelector(
           "#current-value"
-        ).textContent = "Unavailable";
+        ).textContent =
+          "Unavailable";
       }
     }
 
@@ -323,10 +516,18 @@
       button.textContent =
         "Copied";
 
+      button.classList.add(
+        "copied"
+      );
+
       setTimeout(
         () => {
           button.textContent =
             previous;
+
+          button.classList.remove(
+            "copied"
+          );
         },
         1200
       );
