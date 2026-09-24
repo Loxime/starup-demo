@@ -1,243 +1,219 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
 
   <meta
     name="viewport"
-    content="width=device-width, initial-scale=1"
-  >
+    content="width=device-width, initial-scale=1.0"
+  />
 
   <meta
     name="theme-color"
     content="#f97316"
-  >
+  />
 
   <link
     rel="icon"
     href="./assets/starup-icon.png"
-  >
+  />
 
   <title>StarUp Test Target</title>
 
-  <style>
-    :root {
-      font-family:
-        Inter,
-        system-ui,
-        sans-serif;
-
-      color: #e7edf5;
-      background: #0b0f14;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      padding: 40px 20px;
-    }
-
-    main {
-      width: min(720px, 100%);
-      margin: auto;
-    }
-
-    header {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 32px;
-    }
-
-    header img {
-      width: 64px;
-      height: 64px;
-      object-fit: contain;
-    }
-
-    h1,
-    h2 {
-      margin: 0;
-    }
-
-    header p,
-    .help {
-      color: #8896a7;
-    }
-
-    .value {
-      margin-bottom: 20px;
-      padding: 22px;
-
-      border: 1px solid
-        rgba(249, 115, 22, .3);
-
-      border-radius: 10px;
-
-      background: #111820;
-    }
-
-    #current-value {
-      display: block;
-
-      margin-top: 8px;
-
-      color: #fb923c;
-
-      font-size: 42px;
-      font-weight: 800;
-    }
-
-    section {
-      margin-bottom: 16px;
-      padding: 20px;
-
-      border: 1px solid #26313f;
-      border-radius: 10px;
-
-      background: #111820;
-    }
-
-    code {
-      display: block;
-
-      margin: 8px 0 14px;
-      padding: 10px;
-
-      overflow-x: auto;
-
-      border-radius: 7px;
-
-      background: #090d12;
-      color: #ffbd80;
-    }
-
-    a {
-      color: #fb923c;
-    }
-  </style>
+  <link
+    rel="stylesheet"
+    href="./styles.css"
+  />
 </head>
 
 <body>
-  <main>
-    <header>
-      <img
-        src="./assets/starup-icon.png"
-        alt="StarUp"
-      >
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="brand">
+        <img
+          src="./assets/starup-icon.png"
+          alt="StarUp"
+          class="brand-icon small"
+        />
 
-      <div>
-        <h1>StarUp Test Target</h1>
-
-        <p>
-          Une cible HTML et une cible JSON
-          pour tester StarUp.
-        </p>
+        <div>
+          <strong>StarUp Demo</strong>
+          <p>Targets publics pour tester les monitors HTML et JSON</p>
+        </div>
       </div>
+
+      <a
+        class="topbar-link"
+        href="https://github.com/Loxime/starup-demo"
+        target="_blank"
+        rel="noreferrer"
+      >
+        Voir le dépôt
+      </a>
     </header>
 
-    <div class="value">
-      Valeur actuelle
+    <main class="hero-layout">
+      <section class="hero-card">
+        <div class="eyebrow">
+          GitHub Pages • cible publique • test StarUp
+        </div>
 
-      <strong id="current-value">
-        ...
-      </strong>
-    </div>
+        <h1>
+          Une page simple pour tester
+          <span>les incrémentaux HTML et JSON</span>
+        </h1>
 
-    <section>
-      <h2>JSON</h2>
+        <p class="hero-text">
+          Cette page expose deux ressources publiques prêtes à être utilisées
+          dans StarUp : une cible HTML avec un sélecteur CSS et une cible JSON
+          avec un JSON path. La valeur augmente automatiquement dans le temps.
+        </p>
 
-      <p class="help">
-        URL
-      </p>
+        <div class="live-panel">
+          <div class="live-panel-label">
+            Valeur actuelle
+          </div>
 
-      <code id="json-url"></code>
+          <div
+            class="live-value"
+            id="current-value"
+          >
+            ...
+          </div>
 
-      <p class="help">
-        JSON Path
-      </p>
+          <div class="live-meta">
+            Mise à jour automatique de l’affichage
+          </div>
+        </div>
 
-      <code>value</code>
+        <div class="cta-row">
+          <a
+            class="button primary"
+            href="./json/value.json"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Ouvrir le JSON
+          </a>
 
-      <a
-        href="./json/value.json"
-        target="_blank"
-      >
-        Voir le JSON
-      </a>
+          <a
+            class="button secondary"
+            href="./html/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Ouvrir le HTML
+          </a>
+        </div>
+      </section>
+
+      <aside class="mascot-card">
+        <div class="mascot-stage">
+          <div class="blob-glow"></div>
+
+          <img
+            src="./assets/starup-icon.png"
+            alt="Mascotte StarUp"
+            class="brand-icon jellyfish"
+          />
+        </div>
+
+        <p class="mascot-caption">
+          Le blob flotte avec une propulsion douce,
+          comme une petite méduse.
+        </p>
+      </aside>
+    </main>
+
+    <section class="grid">
+      <article class="info-card">
+        <div class="card-header">
+          <h2>Target JSON</h2>
+          <span class="pill">JSON</span>
+        </div>
+
+        <p class="muted">
+          À utiliser dans StarUp avec le type source JSON.
+        </p>
+
+        <div class="field">
+          <span class="field-label">URL</span>
+          <code id="json-url"></code>
+        </div>
+
+        <div class="field">
+          <span class="field-label">JSON Path</span>
+          <code>value</code>
+        </div>
+      </article>
+
+      <article class="info-card">
+        <div class="card-header">
+          <h2>Target HTML</h2>
+          <span class="pill">HTML</span>
+        </div>
+
+        <p class="muted">
+          À utiliser dans StarUp avec le type source HTML.
+        </p>
+
+        <div class="field">
+          <span class="field-label">URL</span>
+          <code id="html-url"></code>
+        </div>
+
+        <div class="field">
+          <span class="field-label">Sélecteur CSS</span>
+          <code>#metric-value</code>
+        </div>
+      </article>
+
+      <article class="info-card wide">
+        <div class="card-header">
+          <h2>Comment tester rapidement</h2>
+          <span class="pill">Guide</span>
+        </div>
+
+        <ol class="steps">
+          <li>Créer un monitor JSON vers l’URL JSON</li>
+          <li>Utiliser <code>value</code> comme JSON path</li>
+          <li>Créer un second monitor HTML vers l’URL HTML</li>
+          <li>Utiliser <code>#metric-value</code> comme sélecteur CSS</li>
+          <li>Comparer les courbes et l’incrément</li>
+        </ol>
+      </article>
     </section>
-
-    <section>
-      <h2>HTML</h2>
-
-      <p class="help">
-        URL
-      </p>
-
-      <code id="html-url"></code>
-
-      <p class="help">
-        Sélecteur CSS
-      </p>
-
-      <code>#metric-value</code>
-
-      <a
-        href="./html/"
-        target="_blank"
-      >
-        Voir le HTML
-      </a>
-    </section>
-  </main>
+  </div>
 
   <script>
     const base =
       location.origin +
-      location.pathname.replace(
-        /\/$/,
-        ""
-      );
+      location.pathname.replace(/\/$/, "");
 
-    document.querySelector(
-      "#json-url"
-    ).textContent =
-      `${base}/json/value.json`;
+    const jsonUrl = `${base}/json/value.json`;
+    const htmlUrl = `${base}/html/`;
 
-    document.querySelector(
-      "#html-url"
-    ).textContent =
-      `${base}/html/`;
+    document.querySelector("#json-url").textContent = jsonUrl;
+    document.querySelector("#html-url").textContent = htmlUrl;
 
-    async function refresh() {
-      const response =
-        await fetch(
+    async function refreshValue() {
+      try {
+        const response = await fetch(
           `./json/value.json?t=${Date.now()}`,
-          {
-            cache: "no-store"
-          }
+          { cache: "no-store" }
         );
 
-      const data =
-        await response.json();
+        const data = await response.json();
 
-      document.querySelector(
-        "#current-value"
-      ).textContent =
-        data.value.toLocaleString(
-          "fr-FR"
-        );
+        document.querySelector("#current-value").textContent =
+          data.value.toLocaleString("fr-FR");
+      } catch (error) {
+        document.querySelector("#current-value").textContent = "Erreur";
+      }
     }
 
-    refresh();
-
-    setInterval(
-      refresh,
-      30000
-    );
+    refreshValue();
+    setInterval(refreshValue, 30000);
   </script>
 </body>
 </html>
