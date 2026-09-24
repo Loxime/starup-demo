@@ -13,6 +13,11 @@
     content="#f97316"
   >
 
+  <link
+    rel="icon"
+    href="./assets/starup-icon.png"
+  >
+
   <title>StarUp Test Target</title>
 
   <style>
@@ -32,19 +37,19 @@
 
     body {
       margin: 0;
-      padding: 48px 20px;
+      padding: 40px 20px;
     }
 
     main {
-      width: min(760px, 100%);
+      width: min(720px, 100%);
       margin: auto;
     }
 
     header {
       display: flex;
       align-items: center;
-      gap: 14px;
-      margin-bottom: 40px;
+      gap: 16px;
+      margin-bottom: 32px;
     }
 
     header img {
@@ -58,38 +63,37 @@
       margin: 0;
     }
 
-    header p {
-      margin: 5px 0 0;
+    header p,
+    .help {
       color: #8896a7;
     }
 
-    .metric {
-      margin-bottom: 28px;
-      padding: 24px;
+    .value {
+      margin-bottom: 20px;
+      padding: 22px;
 
-      border:
-        1px solid rgba(
-          249,
-          115,
-          22,
-          .3
-        );
+      border: 1px solid
+        rgba(249, 115, 22, .3);
 
-      border-radius: 12px;
+      border-radius: 10px;
 
       background: #111820;
     }
 
-    .value {
-      margin: 12px 0;
+    #current-value {
+      display: block;
+
+      margin-top: 8px;
+
       color: #fb923c;
-      font-size: 48px;
+
+      font-size: 42px;
       font-weight: 800;
     }
 
-    .target {
-      margin-top: 16px;
-      padding: 18px;
+    section {
+      margin-bottom: 16px;
+      padding: 20px;
 
       border: 1px solid #26313f;
       border-radius: 10px;
@@ -97,14 +101,10 @@
       background: #111820;
     }
 
-    .target p {
-      color: #8896a7;
-    }
-
     code {
       display: block;
 
-      margin-top: 8px;
+      margin: 8px 0 14px;
       padding: 10px;
 
       overflow-x: auto;
@@ -133,97 +133,89 @@
         <h1>StarUp Test Target</h1>
 
         <p>
-          Une métrique qui augmente
-          toutes les 2 secondes.
+          Une cible HTML et une cible JSON
+          pour tester StarUp.
         </p>
       </div>
     </header>
 
-    <section class="metric">
-      <span>Valeur actuelle</span>
+    <div class="value">
+      Valeur actuelle
 
-      <div
-        class="value"
-        id="value"
-      >
+      <strong id="current-value">
         ...
-      </div>
+      </strong>
+    </div>
 
-      <small>
-        Mise à jour toutes les 2 secondes
-      </small>
-    </section>
-
-    <section class="target">
+    <section>
       <h2>JSON</h2>
 
-      <p>
-        URL à utiliser dans StarUp :
+      <p class="help">
+        URL
       </p>
 
-      <code id="json-url">
-        /api/json
-      </code>
+      <code id="json-url"></code>
 
-      <p>JSON Path :</p>
+      <p class="help">
+        JSON Path
+      </p>
 
       <code>value</code>
 
-      <p>
-        <a
-          href="./api/json"
-          target="_blank"
-        >
-          Ouvrir le JSON
-        </a>
-      </p>
+      <a
+        href="./json/value.json"
+        target="_blank"
+      >
+        Voir le JSON
+      </a>
     </section>
 
-    <section class="target">
+    <section>
       <h2>HTML</h2>
 
-      <p>
-        URL à utiliser dans StarUp :
+      <p class="help">
+        URL
       </p>
 
-      <code id="html-url">
-        /api/html
-      </code>
+      <code id="html-url"></code>
 
-      <p>Sélecteur CSS :</p>
+      <p class="help">
+        Sélecteur CSS
+      </p>
 
       <code>#metric-value</code>
 
-      <p>
-        <a
-          href="./api/html"
-          target="_blank"
-        >
-          Ouvrir le HTML
-        </a>
-      </p>
+      <a
+        href="./html/"
+        target="_blank"
+      >
+        Voir le HTML
+      </a>
     </section>
   </main>
 
   <script>
-    const jsonUrl =
-      `${location.origin}/api/json`;
-
-    const htmlUrl =
-      `${location.origin}/api/html`;
+    const base =
+      location.origin +
+      location.pathname.replace(
+        /\/$/,
+        ""
+      );
 
     document.querySelector(
       "#json-url"
-    ).textContent = jsonUrl;
+    ).textContent =
+      `${base}/json/value.json`;
 
     document.querySelector(
       "#html-url"
-    ).textContent = htmlUrl;
+    ).textContent =
+      `${base}/html/`;
 
     async function refresh() {
       const response =
         await fetch(
-          "./api/json",
+          `./json/value.json?t=${Date.now()}`,
           {
             cache: "no-store"
           }
@@ -233,7 +225,7 @@
         await response.json();
 
       document.querySelector(
-        "#value"
+        "#current-value"
       ).textContent =
         data.value.toLocaleString(
           "fr-FR"
@@ -244,7 +236,7 @@
 
     setInterval(
       refresh,
-      2000
+      30000
     );
   </script>
 </body>

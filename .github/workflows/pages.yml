@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+  schedule:
+    - cron: "*/5 * * * *"
+
   workflow_dispatch:
 
 permissions:
@@ -14,27 +17,33 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   deploy:
+    runs-on: ubuntu-latest
+
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
-    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v6
 
+      - name: Generate incremental targets
+        run: python3 scripts/generate.py
+
+      - name: Validate targets
+        run: python3 scripts/check.py
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload Pages artifact
+      - name: Upload site
         uses: actions/upload-pages-artifact@v4
         with:
-          path: .
+          path: ./site
 
       - name: Deploy
         id: deployment
