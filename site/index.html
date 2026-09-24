@@ -1,219 +1,380 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
 
   <meta
     name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  />
+    content="width=device-width, initial-scale=1"
+  >
 
   <meta
     name="theme-color"
-    content="#f97316"
-  />
+    content="#0d1117"
+  >
+
+  <meta
+    name="description"
+    content="Public incremental HTML and JSON targets for testing StarUp."
+  >
 
   <link
     rel="icon"
     href="./assets/starup-icon.png"
-  />
-
-  <title>StarUp Test Target</title>
+  >
 
   <link
     rel="stylesheet"
     href="./styles.css"
-  />
+  >
+
+  <title>StarUp Test Targets</title>
 </head>
 
 <body>
-  <div class="page-shell">
-    <header class="topbar">
-      <div class="brand">
+  <header class="site-header">
+    <div class="container nav">
+      <a
+        class="brand"
+        href="./"
+      >
         <img
           src="./assets/starup-icon.png"
-          alt="StarUp"
-          class="brand-icon small"
-        />
+          alt=""
+        >
 
-        <div>
-          <strong>StarUp Demo</strong>
-          <p>Targets publics pour tester les monitors HTML et JSON</p>
-        </div>
-      </div>
+        <span>StarUp</span>
+      </a>
 
       <a
-        class="topbar-link"
+        class="github-link"
         href="https://github.com/Loxime/starup-demo"
         target="_blank"
         rel="noreferrer"
       >
-        Voir le dépôt
+        GitHub
       </a>
-    </header>
+    </div>
+  </header>
 
-    <main class="hero-layout">
-      <section class="hero-card">
-        <div class="eyebrow">
-          GitHub Pages • cible publique • test StarUp
+  <main class="container">
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="status">
+          <span class="status-dot"></span>
+          Public test targets
         </div>
 
         <h1>
-          Une page simple pour tester
-          <span>les incrémentaux HTML et JSON</span>
+          Incremental targets for
+          <span>StarUp</span>
         </h1>
 
-        <p class="hero-text">
-          Cette page expose deux ressources publiques prêtes à être utilisées
-          dans StarUp : une cible HTML avec un sélecteur CSS et une cible JSON
-          avec un JSON path. La valeur augmente automatiquement dans le temps.
+        <p>
+          Two public endpoints for testing numeric
+          monitoring with StarUp.
+          One JSON source and one HTML source,
+          both exposing the same incremental value.
         </p>
+      </div>
 
-        <div class="live-panel">
-          <div class="live-panel-label">
-            Valeur actuelle
+      <div class="mascot-wrap">
+        <img
+          class="mascot"
+          src="./assets/starup-icon.png"
+          alt="StarUp mascot"
+        >
+      </div>
+    </section>
+
+    <section class="metric">
+      <div>
+        <span class="metric-label">
+          Current value
+        </span>
+
+        <strong id="current-value">
+          —
+        </strong>
+      </div>
+
+      <div class="metric-meta">
+        <span class="status-dot"></span>
+        Generated every 5 minutes
+      </div>
+    </section>
+
+    <section class="targets">
+      <article class="target-card">
+        <div class="target-heading">
+          <div>
+            <span class="type-badge">
+              JSON
+            </span>
+
+            <h2>
+              JSON target
+            </h2>
           </div>
-
-          <div
-            class="live-value"
-            id="current-value"
-          >
-            ...
-          </div>
-
-          <div class="live-meta">
-            Mise à jour automatique de l’affichage
-          </div>
         </div>
 
-        <div class="cta-row">
-          <a
-            class="button primary"
-            href="./json/value.json"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Ouvrir le JSON
-          </a>
-
-          <a
-            class="button secondary"
-            href="./html/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Ouvrir le HTML
-          </a>
-        </div>
-      </section>
-
-      <aside class="mascot-card">
-        <div class="mascot-stage">
-          <div class="blob-glow"></div>
-
-          <img
-            src="./assets/starup-icon.png"
-            alt="Mascotte StarUp"
-            class="brand-icon jellyfish"
-          />
-        </div>
-
-        <p class="mascot-caption">
-          Le blob flotte avec une propulsion douce,
-          comme une petite méduse.
-        </p>
-      </aside>
-    </main>
-
-    <section class="grid">
-      <article class="info-card">
-        <div class="card-header">
-          <h2>Target JSON</h2>
-          <span class="pill">JSON</span>
-        </div>
-
-        <p class="muted">
-          À utiliser dans StarUp avec le type source JSON.
+        <p>
+          Use this endpoint with a JSON monitor.
         </p>
 
         <div class="field">
-          <span class="field-label">URL</span>
+          <div class="field-header">
+            <span>Endpoint</span>
+
+            <button
+              type="button"
+              data-copy="json-url"
+            >
+              Copy
+            </button>
+          </div>
+
           <code id="json-url"></code>
         </div>
 
         <div class="field">
-          <span class="field-label">JSON Path</span>
+          <div class="field-header">
+            <span>JSON path</span>
+
+            <button
+              type="button"
+              data-copy-value="value"
+            >
+              Copy
+            </button>
+          </div>
+
           <code>value</code>
         </div>
+
+        <a
+          class="open-link"
+          href="./json/value.json"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Open endpoint →
+        </a>
       </article>
 
-      <article class="info-card">
-        <div class="card-header">
-          <h2>Target HTML</h2>
-          <span class="pill">HTML</span>
+      <article class="target-card">
+        <div class="target-heading">
+          <div>
+            <span class="type-badge">
+              HTML
+            </span>
+
+            <h2>
+              HTML target
+            </h2>
+          </div>
         </div>
 
-        <p class="muted">
-          À utiliser dans StarUp avec le type source HTML.
+        <p>
+          Use this endpoint with an HTML monitor.
         </p>
 
         <div class="field">
-          <span class="field-label">URL</span>
+          <div class="field-header">
+            <span>Endpoint</span>
+
+            <button
+              type="button"
+              data-copy="html-url"
+            >
+              Copy
+            </button>
+          </div>
+
           <code id="html-url"></code>
         </div>
 
         <div class="field">
-          <span class="field-label">Sélecteur CSS</span>
+          <div class="field-header">
+            <span>CSS selector</span>
+
+            <button
+              type="button"
+              data-copy-value="#metric-value"
+            >
+              Copy
+            </button>
+          </div>
+
           <code>#metric-value</code>
         </div>
-      </article>
 
-      <article class="info-card wide">
-        <div class="card-header">
-          <h2>Comment tester rapidement</h2>
-          <span class="pill">Guide</span>
-        </div>
-
-        <ol class="steps">
-          <li>Créer un monitor JSON vers l’URL JSON</li>
-          <li>Utiliser <code>value</code> comme JSON path</li>
-          <li>Créer un second monitor HTML vers l’URL HTML</li>
-          <li>Utiliser <code>#metric-value</code> comme sélecteur CSS</li>
-          <li>Comparer les courbes et l’incrément</li>
-        </ol>
+        <a
+          class="open-link"
+          href="./html/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Open endpoint →
+        </a>
       </article>
     </section>
-  </div>
+
+    <section class="usage">
+      <h2>
+        Quick test
+      </h2>
+
+      <div class="usage-grid">
+        <div>
+          <span>01</span>
+          Create a monitor in StarUp.
+        </div>
+
+        <div>
+          <span>02</span>
+          Paste one of the endpoints above.
+        </div>
+
+        <div>
+          <span>03</span>
+          Configure the JSON path or CSS selector.
+        </div>
+
+        <div>
+          <span>04</span>
+          Watch the value grow over time.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>
+        StarUp public test targets
+      </span>
+
+      <span>
+        Hosted on GitHub Pages
+      </span>
+    </div>
+  </footer>
 
   <script>
     const base =
       location.origin +
-      location.pathname.replace(/\/$/, "");
+      location.pathname.replace(
+        /\/$/,
+        ""
+      );
 
-    const jsonUrl = `${base}/json/value.json`;
-    const htmlUrl = `${base}/html/`;
+    const jsonUrl =
+      `${base}/json/value.json`;
 
-    document.querySelector("#json-url").textContent = jsonUrl;
-    document.querySelector("#html-url").textContent = htmlUrl;
+    const htmlUrl =
+      `${base}/html/`;
+
+    document.querySelector(
+      "#json-url"
+    ).textContent = jsonUrl;
+
+    document.querySelector(
+      "#html-url"
+    ).textContent = htmlUrl;
 
     async function refreshValue() {
       try {
-        const response = await fetch(
-          `./json/value.json?t=${Date.now()}`,
-          { cache: "no-store" }
-        );
+        const response =
+          await fetch(
+            `./json/value.json?t=${Date.now()}`,
+            {
+              cache: "no-store"
+            }
+          );
 
-        const data = await response.json();
+        const data =
+          await response.json();
 
-        document.querySelector("#current-value").textContent =
-          data.value.toLocaleString("fr-FR");
-      } catch (error) {
-        document.querySelector("#current-value").textContent = "Erreur";
+        document.querySelector(
+          "#current-value"
+        ).textContent =
+          data.value.toLocaleString(
+            "fr-FR"
+          );
+      } catch {
+        document.querySelector(
+          "#current-value"
+        ).textContent = "Unavailable";
       }
     }
 
+    async function copyText(
+      button,
+      text
+    ) {
+      await navigator.clipboard.writeText(
+        text
+      );
+
+      const previous =
+        button.textContent;
+
+      button.textContent =
+        "Copied";
+
+      setTimeout(
+        () => {
+          button.textContent =
+            previous;
+        },
+        1200
+      );
+    }
+
+    document
+      .querySelectorAll(
+        "[data-copy]"
+      )
+      .forEach((button) => {
+        button.addEventListener(
+          "click",
+          () => {
+            const element =
+              document.getElementById(
+                button.dataset.copy
+              );
+
+            copyText(
+              button,
+              element.textContent
+            );
+          }
+        );
+      });
+
+    document
+      .querySelectorAll(
+        "[data-copy-value]"
+      )
+      .forEach((button) => {
+        button.addEventListener(
+          "click",
+          () => {
+            copyText(
+              button,
+              button.dataset.copyValue
+            );
+          }
+        );
+      });
+
     refreshValue();
-    setInterval(refreshValue, 30000);
+
+    setInterval(
+      refreshValue,
+      30000
+    );
   </script>
 </body>
 </html>
