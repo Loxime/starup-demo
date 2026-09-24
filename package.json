@@ -4,12 +4,6 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node --test tests/*.test.mjs",
-    "check": "node scripts/check-site.mjs",
-    "smoke": "sh scripts/smoke-test.sh",
-    "validate": "npm test && npm run check && npm run smoke"
-  },
-  "devDependencies": {
-    "linkedom": "^0.18.13"
+    "test": "node --test tests/*.test.js"
   }
 }

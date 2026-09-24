@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <meta
+    name="theme-color"
+    content="#f97316"
+  >
+
+  <title>StarUp Test Target</title>
+
+  <style>
+    :root {
+      font-family:
+        Inter,
+        system-ui,
+        sans-serif;
+
+      color: #e7edf5;
+      background: #0b0f14;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 48px 20px;
+    }
+
+    main {
+      width: min(760px, 100%);
+      margin: auto;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 40px;
+    }
+
+    header img {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+    }
+
+    h1,
+    h2 {
+      margin: 0;
+    }
+
+    header p {
+      margin: 5px 0 0;
+      color: #8896a7;
+    }
+
+    .metric {
+      margin-bottom: 28px;
+      padding: 24px;
+
+      border:
+        1px solid rgba(
+          249,
+          115,
+          22,
+          .3
+        );
+
+      border-radius: 12px;
+
+      background: #111820;
+    }
+
+    .value {
+      margin: 12px 0;
+      color: #fb923c;
+      font-size: 48px;
+      font-weight: 800;
+    }
+
+    .target {
+      margin-top: 16px;
+      padding: 18px;
+
+      border: 1px solid #26313f;
+      border-radius: 10px;
+
+      background: #111820;
+    }
+
+    .target p {
+      color: #8896a7;
+    }
+
+    code {
+      display: block;
+
+      margin-top: 8px;
+      padding: 10px;
+
+      overflow-x: auto;
+
+      border-radius: 7px;
+
+      background: #090d12;
+      color: #ffbd80;
+    }
+
+    a {
+      color: #fb923c;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <header>
+      <img
+        src="./assets/starup-icon.png"
+        alt="StarUp"
+      >
+
+      <div>
+        <h1>StarUp Test Target</h1>
+
+        <p>
+          Une métrique qui augmente
+          toutes les 2 secondes.
+        </p>
+      </div>
+    </header>
+
+    <section class="metric">
+      <span>Valeur actuelle</span>
+
+      <div
+        class="value"
+        id="value"
+      >
+        ...
+      </div>
+
+      <small>
+        Mise à jour toutes les 2 secondes
+      </small>
+    </section>
+
+    <section class="target">
+      <h2>JSON</h2>
+
+      <p>
+        URL à utiliser dans StarUp :
+      </p>
+
+      <code id="json-url">
+        /api/json
+      </code>
+
+      <p>JSON Path :</p>
+
+      <code>value</code>
+
+      <p>
+        <a
+          href="./api/json"
+          target="_blank"
+        >
+          Ouvrir le JSON
+        </a>
+      </p>
+    </section>
+
+    <section class="target">
+      <h2>HTML</h2>
+
+      <p>
+        URL à utiliser dans StarUp :
+      </p>
+
+      <code id="html-url">
+        /api/html
+      </code>
+
+      <p>Sélecteur CSS :</p>
+
+      <code>#metric-value</code>
+
+      <p>
+        <a
+          href="./api/html"
+          target="_blank"
+        >
+          Ouvrir le HTML
+        </a>
+      </p>
+    </section>
+  </main>
+
+  <script>
+    const jsonUrl =
+      `${location.origin}/api/json`;
+
+    const htmlUrl =
+      `${location.origin}/api/html`;
+
+    document.querySelector(
+      "#json-url"
+    ).textContent = jsonUrl;
+
+    document.querySelector(
+      "#html-url"
+    ).textContent = htmlUrl;
+
+    async function refresh() {
+      const response =
+        await fetch(
+          "./api/json",
+          {
+            cache: "no-store"
+          }
+        );
+
+      const data =
+        await response.json();
+
+      document.querySelector(
+        "#value"
+      ).textContent =
+        data.value.toLocaleString(
+          "fr-FR"
+        );
+    }
+
+    refresh();
+
+    setInterval(
+      refresh,
+      2000
+    );
+  </script>
+</body>
+</html>
